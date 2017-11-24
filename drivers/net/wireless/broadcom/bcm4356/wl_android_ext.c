@@ -112,7 +112,7 @@ int wl_ext_iovar_setbuf_bsscfg(struct net_device *dev, s8 *iovar_name,
 	void *param, s32 paramlen, void *buf, s32 buflen, s32 bsscfg_idx, struct mutex* buf_sync)
 {
 	int ret;
-	
+
 	ret = wldev_iovar_setbuf_bsscfg(dev, iovar_name, param, paramlen,
 		buf, buflen, bsscfg_idx, buf_sync);
 	if (ret < 0)
@@ -125,7 +125,7 @@ int wl_ext_iovar_getbuf_bsscfg(struct net_device *dev, s8 *iovar_name,
 	void *param, s32 paramlen, void *buf, s32 buflen, s32 bsscfg_idx, struct mutex* buf_sync)
 {
 	int ret;
-	
+
 	ret = wldev_iovar_getbuf_bsscfg(dev, iovar_name, param, paramlen,
 		buf, buflen, bsscfg_idx, buf_sync);
 	if (ret < 0)
@@ -145,7 +145,7 @@ wl_ext_chspec_to_legacy(chanspec_t chspec)
 
 	if (wf_chspec_malformed(chspec)) {
 		ANDROID_ERROR(("wl_ext_chspec_to_legacy: input chanspec (0x%04X) malformed\n",
-		        chspec));
+			chspec));
 		return INVCHANSPEC;
 	}
 
@@ -174,9 +174,9 @@ wl_ext_chspec_to_legacy(chanspec_t chspec)
 		/* cannot express the bandwidth */
 		char chanbuf[CHANSPEC_STR_LEN];
 		ANDROID_ERROR((
-		        "wl_ext_chspec_to_legacy: unable to convert chanspec %s (0x%04X) "
-		        "to pre-11ac format\n",
-		        wf_chspec_ntoa(chspec, chanbuf), chspec));
+			"wl_ext_chspec_to_legacy: unable to convert chanspec %s (0x%04X) "
+			"to pre-11ac format\n",
+			wf_chspec_ntoa(chspec, chanbuf), chspec));
 		return INVCHANSPEC;
 	}
 
@@ -467,10 +467,10 @@ wl_ext_keep_alive(struct net_device *dev, char *command, int total_len)
 			goto exit;
 		} else {
 			mkeep_alive_pktp = (wl_mkeep_alive_pkt_t *) buf;
-			printf("Id            :%d\n"
+			printf("Id	      :%d\n"
 				   "Period (msec) :%d\n"
-				   "Length        :%d\n"
-				   "Packet        :0x",
+				   "Length	  :%d\n"
+				   "Packet	  :0x",
 				   mkeep_alive_pktp->keep_alive_id,
 				   dtoh32(mkeep_alive_pktp->period_msec),
 				   dtoh16(mkeep_alive_pktp->len_bytes));
@@ -487,7 +487,7 @@ wl_ext_keep_alive(struct net_device *dev, char *command, int total_len)
 		ANDROID_TRACE(("%s: command result is %s\n", __FUNCTION__, command));
 		ret = bytes_written;
 	}
-	
+
 exit:
 	return ret;
 }
@@ -1044,7 +1044,7 @@ wl_ext_iapsta_config(struct net_device *dev, char *command, int total_len)
 					cur_if->amode = AUTH_WPAPSK;
 				else if (!strcmp(pch, "wpa2psk"))
 					cur_if->amode = AUTH_WPA2PSK;
-				else if (!strcmp(pch, "wpawpa2psk")) 
+				else if (!strcmp(pch, "wpawpa2psk"))
 					cur_if->amode = AUTH_WPAWPA2PSK;
 				else {
 					ANDROID_ERROR(("%s: amode [open|shared|wpapsk|wpa2psk|wpawpa2psk]\n",
@@ -1063,7 +1063,7 @@ wl_ext_iapsta_config(struct net_device *dev, char *command, int total_len)
 					cur_if->emode = ENC_TKIP;
 				else if (!strcmp(pch, "aes"))
 					cur_if->emode = ENC_AES;
-				else if (!strcmp(pch, "tkipaes")) 
+				else if (!strcmp(pch, "tkipaes"))
 					cur_if->emode = ENC_TKIPAES;
 				else {
 					ANDROID_ERROR(("%s: emode [none|wep|tkip|aes|tkipaes]\n",
@@ -1180,7 +1180,7 @@ wl_ext_iapsta_disable(struct net_device *dev, char *command, int total_len)
 			dhd_wlfc_deinit(dhd);
 		}
 	}
-#endif 
+#endif
 #endif /* PROP_TXSTATUS_VSDB */
 
 	cur_if->ifstate = IF_STATE_DISALBE;
@@ -1329,7 +1329,7 @@ wl_ext_iapsta_enable(struct net_device *dev, char *command, int total_len)
 			wl_ext_ioctl(dev, WLC_UP, NULL, 0, 1);
 		}
 	}
-#endif 
+#endif
 #endif /* PROP_TXSTATUS_VSDB */
 
 	printf("%s: ifname=%s, SSID: %s\n", __FUNCTION__, ifname, cur_if->ssid);
@@ -1401,7 +1401,7 @@ int wl_ext_ip_dump(int ip, char *buf)
 	bytes[0] = ip & 0xFF;
 	bytes[1] = (ip >> 8) & 0xFF;
 	bytes[2] = (ip >> 16) & 0xFF;
-	bytes[3] = (ip >> 24) & 0xFF;   
+	bytes[3] = (ip >> 24) & 0xFF;
 	bytes_written = sprintf(buf, "%d.%d.%d.%d", bytes[0], bytes[1], bytes[2], bytes[3]);
 
 	return bytes_written;
@@ -1471,7 +1471,7 @@ wl_ext_dhcpc_dump(struct net_device *dev, char *command, int total_len)
 
 	if (!bytes_written)
 		bytes_written = -1;
-	
+
 	ANDROID_TRACE(("%s: command result is %s\n", __FUNCTION__, command));
 
 	return bytes_written;
@@ -1486,7 +1486,7 @@ dhd_priv dhd [string] ==> Not ready
   Ex: dhd_priv dhd bussleep 1
 
 dhd_priv wl [WLC_GET_PM]  ==> Ready to get int val
-dhd_priv wl [WLC_SET_PM] [int]  ==> Ready to set int val
+dhd_priv wl [WLC_SET_PM] [int]	==> Ready to set int val
 dhd_priv wl [string]  ==> Ready to get int val
 dhd_priv wl [string] [int]  ==> Ready to set int val
 Ex: get/set WLC_PM
@@ -2174,5 +2174,3 @@ wl_release_bss_cache_ctrl(wl_bss_cache_ctrl_t *bss_cache_ctrl)
 	wl_free_bss_cache(bss_cache_ctrl);
 }
 #endif
-
-

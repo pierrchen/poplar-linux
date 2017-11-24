@@ -329,7 +329,7 @@ static int dhd_init_wlan_mem(void)
 #endif /* BCMDHD_PCIE */
 
 	wlan_static_dhd_memdump_ram_buf = kmalloc(DHD_PREALLOC_MEMDUMP_RAM_SIZE, GFP_KERNEL);
-	if (!wlan_static_dhd_memdump_ram_buf) 
+	if (!wlan_static_dhd_memdump_ram_buf)
 		goto err_mem_alloc;
 	pr_err("%s: sectoin %d, size=%d\n", __func__,
 		DHD_PREALLOC_MEMDUMP_RAM, DHD_PREALLOC_MEMDUMP_RAM_SIZE);
@@ -415,7 +415,7 @@ err_mem_alloc:
 
 	if (wlan_static_wl_escan_info_buf)
 		kfree(wlan_static_wl_escan_info_buf);
-	
+
 #ifdef BCMDHD_PCIE
 	if (wlan_static_fw_verbose_ring_buf)
 		kfree(wlan_static_fw_verbose_ring_buf);
@@ -513,7 +513,7 @@ dhd_static_buf_exit(void)
 
 	if (wlan_static_wl_escan_info_buf)
 		kfree(wlan_static_wl_escan_info_buf);
-	
+
 #ifdef BCMDHD_PCIE
 	if (wlan_static_fw_verbose_ring_buf)
 		kfree(wlan_static_fw_verbose_ring_buf);

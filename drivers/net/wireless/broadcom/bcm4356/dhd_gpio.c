@@ -332,4 +332,3 @@ void dhd_wlan_deinit_plat_data(wifi_adapter_info_t *adapter)
 	printf("======== %s ========\n", __FUNCTION__);
 	dhd_wlan_deinit_gpio();
 }
-
